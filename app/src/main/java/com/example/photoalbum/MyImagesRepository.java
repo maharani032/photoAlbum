@@ -49,7 +49,7 @@ public class MyImagesRepository {
         });
     }
 
-    public LiveData<List<MyImages>> getImageList() {
+    public LiveData<List<MyImages>> getAllImages() {
         return imageList;
     }
 
