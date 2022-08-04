@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 
@@ -72,6 +73,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onActivityResult(ActivityResult result) {
 
+                int resultCode=result.getResultCode();
+                Intent data=result.getData();
+
+                if(resultCode==RESULT_OK&& data!=null){
+
+                    String title=data.getStringExtra("title");
+                    String description=data.getStringExtra("description");
+                    byte[] image =data.getByteArrayExtra("image");
+
+                    MyImages myImages= new MyImages(title,description,image);
+                    myImagesViewModel.insert(myImages);
+                }
             }
         });
 

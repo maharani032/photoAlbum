@@ -1,5 +1,6 @@
 package com.example.photoalbum;
 
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +34,11 @@ public class MyImagesAdapter extends RecyclerView.Adapter<MyImagesAdapter.MyImag
     @Override
     public void onBindViewHolder(@NonNull MyImagesHolder holder, int position) {
 
+        MyImages myImages=imagesList.get(position);
+        holder.textViewTitle.setText(myImages.getImage_title());
+        holder.textViewDescription.setText(myImages.getImage_description());
+        holder.imageView.setImageBitmap(BitmapFactory.decodeByteArray(myImages.getImage()
+                ,0,myImages.getImage().length));
     }
 
     @Override
