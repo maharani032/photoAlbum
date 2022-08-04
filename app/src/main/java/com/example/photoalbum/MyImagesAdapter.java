@@ -48,7 +48,7 @@ public class MyImagesAdapter extends RecyclerView.Adapter<MyImagesAdapter.MyImag
         public MyImagesHolder(@NonNull View itemView) {
             super(itemView);
 
-            imagesList=itemView.findViewById(R.id.imageView);
+            imageView=itemView.findViewById(R.id.imageView);
             textViewTitle=itemView.findViewById(R.id.textViewTitle);
             textViewDescription=itemView.findViewById(R.id.textViewDescription);
         }
