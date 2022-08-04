@@ -19,7 +19,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 public class AddImageActivity extends AppCompatActivity {
@@ -32,6 +34,7 @@ public class AddImageActivity extends AppCompatActivity {
     ActivityResultLauncher<Intent>activityResultLauncherForSelectImage;
 
     private Bitmap selectedImage;
+    private Bitmap scaledImage;
 
 
     @Override
@@ -70,7 +73,17 @@ public class AddImageActivity extends AppCompatActivity {
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                if(selectedImage==null){
+                    Toast.makeText(AddImageActivity.this
+                            ,"Please select an image!!",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                String title=editTextAddTitle.getText().toString();
+                String description=editTextAddDescription.getText().toString();
+                ByteArrayOutputStream outputStream=new ByteArrayOutputStream();
+                scaledImage=makeSmall(selectedImage,300);
+                scaledImage.compress(Bitmap.CompressFormat.PNG,50,outputStream);
+                byte[] image= outputStream.toByteArray();
             }
         });
 
@@ -117,4 +130,24 @@ public class AddImageActivity extends AppCompatActivity {
         }
 
     }
+
+    public Bitmap makeSmall(Bitmap image,int maxSize){
+
+        int width=image.getWidth();
+        int height=image.getHeight();
+
+        float ratio=(float)width/(float)height;
+
+        if(ratio>1){
+//            width>height
+            width=maxSize;
+            height= (int) (width / ratio);
+        }else{
+            height=maxSize;
+            width=(int)(height*ratio);
+        }
+        return Bitmap.createScaledBitmap(image,width,height,true);
+    }
+
+
 }
