@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTint="#CEB5FA"
+    tools:context=".AddImageActivity">
+
+    <ImageView
+        android:id="@+id/imageViewAddImage"
+        android:layout_width="300dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="20dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewAddImage"
+        tools:layout_editor_absoluteX="1dp">
+
+        <EditText
+            android:id="@+id/editTextAddTitle"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:backgroundTint="#CEB5FA"
+            android:ems="10"
+            android:fontFamily="sans-serif-medium"
+            android:hint="Add Title"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:padding="10dp"
+            android:textColor="@color/material_dynamic_neutral0" />
+
+        <EditText
+            android:id="@+id/editTextAddDescription"
+            style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
+            android:layout_width="300dp"
+            android:layout_height="150dp"
+            android:layout_margin="10dp"
+            android:backgroundTint="#CEB5FA"
+            android:ems="10"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="start|top"
+            android:hint="Add Description"
+            android:inputType="textMultiLine"
+            android:padding="10dp"
+            android:textColor="@color/material_dynamic_neutral0" />
+
+        <Button
+            android:id="@+id/buttonSave"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:backgroundTint="#CEB5FA"
+            android:text="SAVE"
+            android:textColor="#777272"
+            android:textSize="20sp"
+            app:icon="@android:drawable/ic_menu_save"
+            app:iconGravity="textStart"
+            app:iconSize="24sp"
+            app:iconTint="#777272" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
