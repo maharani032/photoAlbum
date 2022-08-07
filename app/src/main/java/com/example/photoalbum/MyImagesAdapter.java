@@ -22,6 +22,11 @@ public class MyImagesAdapter extends RecyclerView.Adapter<MyImagesAdapter.MyImag
         notifyDataSetChanged();
     }
 
+    public MyImages getPosition(int position){
+        return imagesList.get(position);
+
+    }
+
     @NonNull
     @Override
     public MyImagesHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
