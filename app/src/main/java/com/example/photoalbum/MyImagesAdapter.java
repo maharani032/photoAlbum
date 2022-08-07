@@ -16,7 +16,16 @@ import java.util.List;
 public class MyImagesAdapter extends RecyclerView.Adapter<MyImagesAdapter.MyImagesHolder>{
 
     List<MyImages> imagesList= new ArrayList<>();
+    private OnImageClickListener listener;
 
+    public void setListener(OnImageClickListener listener) {
+        this.listener = listener;
+    }
+
+    public interface OnImageClickListener{
+
+        void onImageClick(MyImages myImages);
+    }
     public void setImagesList(List<MyImages> imagesList) {
         this.imagesList = imagesList;
         notifyDataSetChanged();
@@ -62,6 +71,17 @@ public class MyImagesAdapter extends RecyclerView.Adapter<MyImagesAdapter.MyImag
             imageView=itemView.findViewById(R.id.imageView);
             textViewTitle=itemView.findViewById(R.id.textViewTitle);
             textViewDescription=itemView.findViewById(R.id.textViewDescription);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getAdapterPosition();
+
+                    if(listener!=null && position != RecyclerView.NO_POSITION){
+                        listener.onImageClick(imagesList.get(position));
+                    }
+                }
+            });
         }
     }
 
